@@ -41,4 +41,15 @@ final class GetInTest extends TestCase
 
         $this->assertSame('fakepass', get_in(['password'], $user, 'fakepass'));
     }
+
+    /** @test */
+    public function it_should_return_the_default_value_provided_if_the_key_exists_with_value_other_than_array(): void
+    {
+        $user = [
+            'username' => 'Peter',
+            'profile'  => null,
+        ];
+
+        $this->assertSame('fakepass', get_in(['profile', 'password'], $user, 'fakepass'));
+    }
 }
